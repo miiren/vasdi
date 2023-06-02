@@ -1,0 +1,23 @@
+Swithe:
+Server:
+  RunMode: debug
+  HttpPort: 8087
+  ReadTimeout: 60
+  WriteTimeout: 60
+Mysql:
+  UserName: root
+  Password: 123456
+  Host: 127.0.0.1
+  Port: 3306
+  DBName: btool
+  Charset: utf8
+  ParseTime: True
+  MaxIdleConns: 10
+  MaxOpenConns: 30
+URedis:
+  Addr: 127.0.0.1:6379
+  Password: 123456
+  DB: 0
+GoCache:
+  DefaultExpiration: 5
+  CleanupInterval: 10

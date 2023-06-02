@@ -1,0 +1,11 @@
+# phpstorm project files
+.idea
+# Mac DS_Store Files
+.DS_Store
+# vscode project files
+.vscode
+
+
+# 日志文件不提交
+/runtime/*.log
+/view/runtime/*.log
