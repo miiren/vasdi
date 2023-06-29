@@ -1,13 +1,14 @@
 # 项目目录结构说明
 
+```
 ┌── view              视图层
 ├── adapter           适配层
 │   ├── controller        http请求控制层
 │   │   ├── xxx               xxx业务控制器层
 │   │   └── xxx               xxx业务控制器层
-│   ├── router        web框架路由管理目录
-│   ├── middleware    web框架中间件
-│   ├── job           定时任务、脚本启动控制层
+│   ├── router            web框架路由管理目录
+│   ├── middleware        web框架中间件
+│   ├── job               定时任务、脚本启动控制层
 │   └── vo     
 │       ├── req           入参结构体层
 │       └── res           出参结构体层
@@ -36,5 +37,7 @@
 ├── resource          资源文件目录
 ├── build.sh          项目构建脚本
 └── main.go           项目启动入口
+
+```
 
 # 分层调用说明
