@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"time"
-	"vasdi/infrastructure/cnf"
+	"vasdi/inservice/cnf"
 
 	"github.com/miiren/mbox/orm"
 	"gorm.io/gorm"

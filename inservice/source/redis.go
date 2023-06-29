@@ -2,9 +2,10 @@ package source
 
 import (
 	"fmt"
-	"github.com/miiren/mbox/redis"
 	"log"
-	"vasdi/infrastructure/cnf"
+	"vasdi/inservice/cnf"
+
+	"github.com/miiren/mbox/redis"
 )
 
 var (

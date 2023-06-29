@@ -5,9 +5,9 @@ import (
 	"log"
 	"vasdi/adapter/job"
 	"vasdi/adapter/router"
-	"vasdi/infrastructure/cnf"
-	log2 "vasdi/infrastructure/log"
-	"vasdi/infrastructure/source"
+	"vasdi/inservice/cnf"
+	log2 "vasdi/inservice/log"
+	"vasdi/inservice/source"
 
 	"github.com/miiren/mutil/mtool"
 )
