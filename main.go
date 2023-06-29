@@ -50,7 +50,7 @@ func appInit(configPath string) {
 		log.Panicf("init.InitCnf err: %v", err)
 	}
 	//初始化项目logger
-	log2.InitLogger(appBasePath + "/runtimes/")
+	log2.InitLogger(appBasePath + "/runtime/")
 	//cache初始化
 	source.InitCache()
 	//数据库初始化
