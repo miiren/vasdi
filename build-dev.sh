@@ -1,6 +1,5 @@
 #!/bin/sh
-
-find ../ -name "*.go" | xargs gofmt -l -d -w
+find ./ -name "*.go" | xargs gofmt -l -d -w
 
 # MAC
 CGO_ENABLED=0 GOOS=darwin GOARCH=amd64 go build -o dev-application main.go

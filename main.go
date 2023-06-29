@@ -1,21 +1,22 @@
 package main
 
 import (
-	"btool/adapter/router"
-	"btool/data/po"
-	"btool/infrastructure/initialize"
-	"btool/infrastructure/pkg/utool"
-	"btool/infrastructure/source"
 	"flag"
-	"fmt"
 	"log"
+	"vasdi/adapter/job"
+	"vasdi/adapter/router"
+	"vasdi/infrastructure/cnf"
+	log2 "vasdi/infrastructure/log"
+	"vasdi/infrastructure/source"
+
+	"github.com/miiren/mutil/mtool"
 )
 
 var appBasePath string
 
 func init() {
 	appBasePath = getAppBasePath()
-	initialize.AppInit(flagConfigVar())
+	appInit(flagConfigVar())
 }
 
 func main() {
@@ -27,7 +28,7 @@ func main() {
 }
 
 func getAppBasePath() string {
-	curPath := utool.GetCurrentAbPath(1)
+	curPath := mtool.GetCurrentAbPath(1)
 
 	return curPath + "/"
 }
@@ -35,18 +36,26 @@ func getAppBasePath() string {
 func flagConfigVar() string {
 	//获取控制台参数
 	var mode string
-	flag.StringVar(&mode, "m", "pro", "application run mode, Default: `pro`")
+	flag.StringVar(&mode, "m", "test", "application run mode, Default: `test`")
 	flag.Parse()
 	configPath := appBasePath + "resources/config-" + mode + ".yaml"
 	return configPath
 }
 
-func initDbTable() {
-	err := source.DB.AutoMigrate(
-		&po.AppInfo{}, &po.ApiInfo{},
-	)
+// 对项目进行初始化
+func appInit(configPath string) {
+	//configInit
+	err := cnf.InitCnf(configPath)
 	if err != nil {
-		fmt.Println(err)
+		log.Panicf("init.InitCnf err: %v", err)
 	}
-	fmt.Println("ok")
+	//初始化项目logger
+	log2.InitLogger(appBasePath + "/runtimes/")
+	//cache初始化
+	source.InitCache()
+	//数据库初始化
+	source.InitDB(log2.LoggerDb)
+	source.InitRedis()
+	//初始化job
+	job.InitJob()
 }
